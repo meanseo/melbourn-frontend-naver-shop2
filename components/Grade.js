@@ -14,8 +14,8 @@ export default function Grade (){
 
     const handleClick = (e) => {
         e.preventDefault()
-        const calcRequest = {name, kor, eng, math}
-        alert(`사용자 이름: ${JSON.stringify(calcRequest)}`)
+        const gradeRequest = {name, kor, eng, math}
+        alert(`사용자 이름: ${JSON.stringify(gradeRequest)}`)
     }
 
 
@@ -30,11 +30,11 @@ export default function Grade (){
         <label htmlFor=""><b>국어 점수</b></label>
         <input type="text" name="kor" onChange={handleChange}/><br/>
 
-        <label><b>영어 점수</b></label>
-        <input type="" name="eng"/><br/>
+        <label htmlFor=""><b>영어 점수</b></label>
+        <input type="text" name="eng" onChange={handleChange}/><br/>
 
-        <label><b>수학 점수</b></label>
-        <input type="" name="math"/><br/>
+        <label htmlFor=""><b>수학 점수</b></label>
+        <input type="text" name="math" onChange={handleChange}/><br/>
 
         <button onClick={handleClick}>execute</button>
         
