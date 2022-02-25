@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { memberGrade } from "../api";
 import Layout from "../containers/Layout";
 
 export default function Grade (){
         
     const [inputs, setInputs] = useState({})
+    const [result, setResult] = useState('')
     const { name, kor, eng, math } = inputs;
 
     const handleChange = (e) => {
@@ -14,8 +16,7 @@ export default function Grade (){
 
     const handleClick = (e) => {
         e.preventDefault()
-        const gradeRequest = {name, kor, eng, math}
-        alert(`사용자 이름: ${JSON.stringify(gradeRequest)}`)
+        memberGrade({name, kor, eng, math}).then(res => setResult(res.data)).catch( err => console.log(`에러발생 : ${err}`))
     }
 
 
@@ -40,7 +41,7 @@ export default function Grade (){
         
         </div>
         </form>
-        
+        <div> {result} </div>
         </Layout>
 
     )

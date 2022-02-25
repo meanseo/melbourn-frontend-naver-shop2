@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { memberLogin } from '../api';
 import Layout from '../containers/Layout';
 
 export default function Login (){
     
     const [inputs, setInputs] = useState({})
-    const {name, password} = inputs;
+    const [result, setResult] = useState('')
+    const {id, password} = inputs;
 
     const handleChange = (e) => {
         e.preventDefault()
@@ -14,16 +16,15 @@ export default function Login (){
     
     const handleClick = (e) =>{
         e.preventDefault()
-        const loginRequest = {name, password}
-        alert(`${JSON.stringify(loginRequest)}`)
+        memberLogin({id, password}).then(res=> setResult(res.data)).catch( err => console.log(`에러발생 : ${err}`))
     }
 
     return <Layout>
     <h1>로그인 폼</h1>
     <form>
         <div>
-        <label><b>Username</b></label>
-        <input type="text" name="name" onChange={handleChange}/><br/>
+        <label><b>ID</b></label>
+        <input type="text" name="id" onChange={handleChange}/><br/>
         
         <label><b>Password</b></label>
         <input type="" name="password" onChange={handleChange}/><br/>
@@ -35,5 +36,6 @@ export default function Login (){
             <span>Forget<a>Password?</a></span>
         </div>
     </form>
+    <div>{result}</div>
     </Layout>
 }
