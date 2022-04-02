@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Layout from "../containers/Layout";
+import {Layout} from "../containers/index";
 import {memberBmi} from '../api/index'
 
 
